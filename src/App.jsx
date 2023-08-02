@@ -31,29 +31,28 @@ function App() {
   // }, []);
 
   return (
-    <div style={{ marginTop: '20px' }}>
-      <div className="App">
-        <div className="header">
-          <img src={Than} alt="rasm" srcset="" />
-          <div className="s">회원가입</div>
-        </div>
-        <div className="title">
-          <h2>
-            친구들이 알수있도록, <br />
-            사진과 이름을 등록해주세요
-          </h2>
-        </div>
-        <div className="avatar">
-          <Avatar size={120} icon={<UserOutlined />} />
-        </div>
-        <div>
-          <input type="text" placeholder="이름" />
-        </div>
-        <div>
-          <button>완료하기</button>
-        </div>
+    <div className="App">
+      <div className="header">
+        <img src={Than} alt="rasm" srcset="" />
+        <div className="s">회원가입</div>
+      </div>
+      <div className="title">
+        <h2>
+          친구들이 알수있도록, <br />
+          사진과 이름을 등록해주세요
+        </h2>
+      </div>
+      <div className="avatar">
+        <Avatar size={120} icon={<UserOutlined />} />
+      </div>
+      <div>
+        <input type="text" placeholder="이름" />
+      </div>
+      <div>
+        <button>완료하기</button>
+      </div>
 
-        {/* <form onSubmit={handleSubmit}>
+      {/* <form onSubmit={handleSubmit}>
         <input
           type="file"
           accept="image/*"
@@ -71,7 +70,6 @@ function App() {
           </div>
         );
       })} */}
-      </div>
     </div>
   );
 }

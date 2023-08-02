@@ -1,6 +1,6 @@
 .App {
   max-width: 375px;
-  min-height: 668px;
+  height: 100vh;
   background: white;
   margin: 0 auto;
   box-sizing: border-box;

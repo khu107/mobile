@@ -1,58 +1,49 @@
-// import { useEffect, useState } from 'react';
-// import { uploadImage } from './upload';
-// import axios from 'axios';
-import { UserOutlined } from '@ant-design/icons';
-import { Avatar } from 'antd';
+import { useEffect, useState } from 'react';
+import { uploadImage } from './upload';
+import axios from 'axios';
+import { useRecoilState } from 'recoil';
+
 import './App.css';
-import Than from './asset/s.png';
+import { themeState } from './recoil/recoilState';
 
 function App() {
-  // const [file, setFile] = useState({});
-  // const [result, setResult] = useState(null);
+  const [file, setFile] = useState({});
+  const [result, setResult] = useState(null);
+  const [theme, setTheme] = useRecoilState(themeState);
+  const handleChange = (e) => {
+    setFile(e.target.files[0]);
+  };
+  const toggleTheme = () => {
+    const newTheme = theme === 'light' ? 'dark' : 'light';
+    setTheme(newTheme);
+    localStorage.setItem('theme', newTheme); // 테마 기호를 로컬 스토리지에 저장
+  };
+  useEffect(() => {
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+      setTheme(savedTheme);
+    }
+  }, []);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    uploadImage(file).then((url) => {
+      const config = {
+        img: url,
+      };
+      axios.post('http://localhost:4000/users', config);
+      setResult([...result, config]);
+    });
+  };
 
-  // const handleChange = (e) => {
-  //   setFile(e.target.files[0]);
-  // };
-
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   uploadImage(file).then((url) => {
-  //     const config = {
-  //       img: url,
-  //     };
-  //     axios.post('http://localhost:4000/users', config);
-  //     setResult([...result, config]);
-  //   });
-  // };
-  // useEffect(() => {
-  //   axios.get('http://localhost:4000/users').then((res) => {
-  //     setResult(res.data);
-  //   });
-  // }, []);
+  useEffect(() => {
+    axios.get('http://localhost:4000/users').then((res) => {
+      setResult(res.data);
+    });
+  }, []);
 
   return (
-    <div className="App">
-      <div className="header">
-        <img src={Than} alt="rasm" srcset="" />
-        <div className="s">회원가입</div>
-      </div>
-      <div className="title">
-        <h2>
-          친구들이 알수있도록, <br />
-          사진과 이름을 등록해주세요
-        </h2>
-      </div>
-      <div className="avatar">
-        <Avatar size={120} icon={<UserOutlined />} />
-      </div>
-      <div>
-        <input type="text" placeholder="이름" />
-      </div>
-      <div>
-        <button>완료하기</button>
-      </div>
-
-      {/* <form onSubmit={handleSubmit}>
+    <div className={`App ${theme}`}>
+      <form onSubmit={handleSubmit}>
         <input
           type="file"
           accept="image/*"
@@ -62,6 +53,7 @@ function App() {
         />
         <button type="submit">ok</button>
       </form>
+      <button onClick={toggleTheme}>dark</button>
 
       {result?.map((e, i) => {
         return (
@@ -69,7 +61,7 @@ function App() {
             <img src={e.img} alt="rasm" width={500} />
           </div>
         );
-      })} */}
+      })}
     </div>
   );
 }

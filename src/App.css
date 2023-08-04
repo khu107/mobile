@@ -1,49 +1,17 @@
+/* App.css */
+
 .App {
-  max-width: 428px;
-  height: 100vh;
-  background: white;
-  margin: 0 auto;
-  box-sizing: border-box;
-  padding: 20px;
-}
-.header {
-  width: 100%;
-  display: flex;
-}
-
-img {
-  height: 20px;
-}
-.s {
-  margin: 0 auto;
-  font-weight: bold;
-  color: rgb(119, 119, 119);
-}
-
-.title h2 {
-  color: rgb(119, 119, 119);
-}
-.avatar {
-  width: 100%;
   text-align: center;
-  padding: 10px 0px 20px 0px;
+  transition: background-color 0.3s ease;
+  min-height: 100vh;
 }
-input {
-  width: 100%;
-  padding: 5px;
-  font-size: 16px;
-  margin-top: 10px;
-  border-top: none;
-  border-right: none;
-  border-left: none;
-  outline: none;
+
+.App.light {
+  background-color: white;
+  color: black;
 }
-button {
-  margin-top: 70px;
-  border: none;
-  background: rgb(152, 152, 152);
-  width: 100%;
-  padding: 10px;
-  border-radius: 20px;
+
+.App.dark {
+  background-color: black;
   color: white;
 }

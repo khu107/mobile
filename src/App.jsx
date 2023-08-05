@@ -5,6 +5,10 @@ import { useRecoilState } from 'recoil';
 
 import './App.css';
 import { themeState } from './recoil/recoilState';
+import Header from './pages/Header';
+import Side from './pages/Side';
+import List from './pages/List';
+import Footer from './pages/Footer';
 
 function App() {
   const [file, setFile] = useState({});
@@ -24,26 +28,31 @@ function App() {
       setTheme(savedTheme);
     }
   }, []);
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    uploadImage(file).then((url) => {
-      const config = {
-        img: url,
-      };
-      axios.post('http://localhost:4000/users', config);
-      setResult([...result, config]);
-    });
-  };
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   uploadImage(file).then((url) => {
+  //     const config = {
+  //       img: url,
+  //     };
+  //     axios.post('http://localhost:4000/users', config);
+  //     setResult([...result, config]);
+  //   });
+  // };
 
-  useEffect(() => {
-    axios.get('http://localhost:4000/users').then((res) => {
-      setResult(res.data);
-    });
-  }, []);
+  // useEffect(() => {
+  //   axios.get('http://localhost:4000/users').then((res) => {
+  //     setResult(res.data);
+  //   });
+  // }, []);
 
   return (
     <div className={`App ${theme}`}>
-      <form onSubmit={handleSubmit}>
+      <Header />
+      <Side />
+      <List />
+      <Footer />
+
+      {/* <form onSubmit={handleSubmit}>
         <input
           type="file"
           accept="image/*"
@@ -53,15 +62,7 @@ function App() {
         />
         <button type="submit">ok</button>
       </form>
-      <button onClick={toggleTheme}>dark</button>
-
-      {result?.map((e, i) => {
-        return (
-          <div key={i}>
-            <img src={e.img} alt="rasm" width={500} />
-          </div>
-        );
-      })}
+      <button onClick={toggleTheme}>dark</button> */}
     </div>
   );
 }

@@ -1,9 +1,15 @@
 /* App.css */
 
 .App {
+  box-sizing: border-box;
+  max-width: 462px;
+  height: 844px;
+  margin: 0 auto;
   text-align: center;
   transition: background-color 0.3s ease;
-  min-height: 100vh;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
 }
 
 .App.light {

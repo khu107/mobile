@@ -7,7 +7,7 @@ export default function Header() {
 const Wrap = styled.div`
   width: 100%;
   background: #c2c2c2;
-  height: 206px;
+
   box-sizing: border-box;
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;

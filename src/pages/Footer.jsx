@@ -6,7 +6,7 @@ export default function Footer() {
 const Wrap = styled.div`
   width: 100%;
   border: 1px solid black;
-  height: 70px;
+  box-sizing: border-box;
   border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px;
 `;

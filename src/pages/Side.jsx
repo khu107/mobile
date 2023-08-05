@@ -6,6 +6,6 @@ export default function Side() {
 
 const Wrap = styled.div`
   width: 100%;
-  height: 174px;
+  box-sizing: border-box;
   border: 1px solid red;
 `;

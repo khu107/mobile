@@ -5,5 +5,4 @@ export default function List() {
 }
 const Wrap = styled.div`
   width: 100%;
-  height: 390px;
 `;
